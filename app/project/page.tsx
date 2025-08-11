@@ -45,8 +45,8 @@ const projects: Project[] = [
       "Clone of Disney+ UI",
     ],
     tech: ["React", "NextJs", "Tailwind", "Shadcn UI"],
-    live: "https://github.com/amoswijaya/disney-clone",
-    code: "https://disney-clone-amos.vercel.app/",
+    code: "https://github.com/amoswijaya/disney-clone",
+    live: "https://disney-clone-amos.vercel.app/",
   },
   {
     title: "MDRL Store",
