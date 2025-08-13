@@ -2,6 +2,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 
 export type Project = {
   title: string;
@@ -12,10 +13,23 @@ export type Project = {
   tech: string[];
   live?: string;
   code?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export default function ProjectCard(props: Project) {
-  const { title, type, year, status, features, tech, live, code } = props;
+  const {
+    title,
+    type,
+    year,
+    status,
+    features,
+    tech,
+    live,
+    code,
+    image,
+    imageAlt,
+  } = props;
 
   const statusColor =
     status === "Completed"
@@ -30,6 +44,18 @@ export default function ProjectCard(props: Project) {
       transition={{ type: "spring", stiffness: 100 }}
       className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col gap-4"
     >
+      {image && (
+        <div className="relative w-full h-40 overflow-hidden rounded-xl border border-gray-100 dark:border-gray-700">
+          <Image
+            src={image}
+            alt={imageAlt ?? `${title} preview`}
+            className="w-full h-full object-cover"
+            width={400}
+            height={200}
+          />
+        </div>
+      )}
+
       <div>
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">
           {title}
@@ -46,7 +72,6 @@ export default function ProjectCard(props: Project) {
         </div>
       </div>
 
-      {/* Features */}
       <div>
         <h4 className="font-semibold text-sm mb-1 text-gray-800 dark:text-gray-200">
           Features
